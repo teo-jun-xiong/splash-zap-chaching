@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utility Dashboard</title>
+
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="app-container">
+      <header class="header glass-panel">
+        <div>
+          <h1>Home Utilities Overview</h1>
+          <p class="subtitle">Tracking monthly electric & water expenses</p>
+        </div>
+        <div id="latest-total" class="latest-total">
+          <span class="label">Latest Bill Total</span>
+          <span class="amount" id="header-total-amount">$0.00</span>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="chart-section glass-panel">
+          <div class="chart-header">
+            <h2>Expenses Over Time</h2>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="utilitiesChart"></canvas>
+          </div>
+        </section>
+
+        <section class="table-section glass-panel">
+          <div class="table-header">
+            <h2>Recent Bills</h2>
+          </div>
+          <div class="table-wrapper">
+            <table id="billsTable">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Electric</th>
+                  <th>Water</th>
+                  <th>Total</th>
+                  <th>Due Date</th>
+                </tr>
+              </thead>
+              <tbody id="billsTableBody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
