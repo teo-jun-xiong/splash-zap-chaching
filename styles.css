@@ -7,8 +7,8 @@
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
 
-  --accent-electric: #38bdf8;
-  --accent-water: #818cf8;
+  --accent-electric: #fbbf24;
+  --accent-water: #38bdf8;
   --accent-total: #10b981;
 }
 
@@ -41,7 +41,7 @@ body {
   left: -5%;
   width: 400px;
   height: 400px;
-  background: rgba(56, 189, 248, 0.4);
+  background: rgba(251, 191, 36, 0.4);
   animation: float 10s ease-in-out infinite;
 }
 .blob-2 {
@@ -49,7 +49,7 @@ body {
   right: -5%;
   width: 500px;
   height: 500px;
-  background: rgba(129, 140, 248, 0.3);
+  background: rgba(56, 189, 248, 0.3);
   animation: float 12s ease-in-out infinite reverse;
 }
 .blob-3 {
