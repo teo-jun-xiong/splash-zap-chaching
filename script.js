@@ -1,3 +1,7 @@
+let globalData = [];
+let currentPage = 1;
+const PAGE_SIZE = 12;
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
@@ -50,18 +54,21 @@ function processData(csvText) {
   }
 
   // Render
-  renderTable(data);
+  globalData = data;
+  renderTable();
   renderChart(data);
 }
 
-function renderTable(data) {
+function renderTable() {
   const tbody = document.getElementById("billsTableBody");
   tbody.innerHTML = "";
 
-  // Show newest first in table
-  const reversedData = [...data].reverse();
+  const reversedData = [...globalData].reverse();
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = startIndex + PAGE_SIZE;
+  const pageItems = reversedData.slice(startIndex, endIndex);
 
-  reversedData.forEach((row) => {
+  pageItems.forEach((row) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${row.month}</td>
@@ -72,6 +79,16 @@ function renderTable(data) {
     `;
     tbody.appendChild(tr);
   });
+
+  const totalPages = Math.ceil(reversedData.length / PAGE_SIZE) || 1;
+  document.getElementById("pageIndicator").textContent = `Page ${currentPage} of ${totalPages}`;
+  document.getElementById("prevPageBtn").disabled = currentPage === 1;
+  document.getElementById("nextPageBtn").disabled = endIndex >= reversedData.length;
+}
+
+function changePage(delta) {
+  currentPage += delta;
+  renderTable();
 }
 
 function renderChart(data) {

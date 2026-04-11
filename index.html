@@ -37,15 +37,6 @@
       </header>
 
       <main class="dashboard-grid">
-        <section class="chart-section glass-panel">
-          <div class="chart-header">
-            <h2>Expenses Over Time</h2>
-          </div>
-          <div class="chart-wrapper">
-            <canvas id="utilitiesChart"></canvas>
-          </div>
-        </section>
-
         <section class="table-section glass-panel">
           <div class="table-header">
             <h2>Recent Bills</h2>
@@ -65,6 +56,20 @@
                 <!-- Dynamically populated -->
               </tbody>
             </table>
+          </div>
+          <div class="pagination-controls" style="display:flex; justify-content:space-between; margin-top:1rem;">
+            <button id="prevPageBtn" onclick="changePage(-1)" style="padding:0.5rem 1rem; border-radius:6px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:white; cursor:pointer;" disabled>Previous</button>
+            <span id="pageIndicator" style="align-self:center; color:#94a3b8; font-size:0.9rem;">Page 1</span>
+            <button id="nextPageBtn" onclick="changePage(1)" style="padding:0.5rem 1rem; border-radius:6px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:white; cursor:pointer;">Next</button>
+          </div>
+        </section>
+
+        <section class="chart-section glass-panel">
+          <div class="chart-header">
+            <h2>Expenses Over Time</h2>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="utilitiesChart"></canvas>
           </div>
         </section>
       </main>
