@@ -1,0 +1,26 @@
+name: Add Utility Bill
+
+on:
+  repository_dispatch:
+    types: [add_utility]
+
+permissions:
+  contents: write
+
+jobs:
+  add-utility-row:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Append to CSV
+        run: |
+          echo "${{ github.event.client_payload.month }},${{ github.event.client_payload.electric }},${{ github.event.client_payload.water }},${{ github.event.client_payload.due_date }}" >> data.csv
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add data.csv
+          git commit -m "Add new utility bill for ${{ github.event.client_payload.month }}"
+          git push
