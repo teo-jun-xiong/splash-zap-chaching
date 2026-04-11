@@ -209,14 +209,40 @@ td:nth-child(4) {
 
 @media (max-width: 768px) {
   body {
+    padding: 0.5rem;
+  }
+  .app-container {
+    gap: 1rem;
+  }
+  .glass-panel {
     padding: 1rem;
+  }
+  h1 {
+    font-size: 1.4rem;
   }
   .header {
     flex-direction: column;
     align-items: flex-start;
   }
   .latest-total {
+    flex-direction: column;
     align-items: flex-start;
     width: 100%;
+  }
+  .latest-total .amount {
+    font-size: 1.5rem;
+  }
+  th, td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  table {
+    min-width: 100%;
+  }
+  .chart-wrapper {
+    height: 300px;
+  }
+  .blob {
+    display: none;
   }
 }
