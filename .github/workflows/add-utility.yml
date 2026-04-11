@@ -15,7 +15,10 @@ jobs:
 
       - name: Append to CSV
         run: |
-          echo "${{ github.event.client_payload.month }},${{ github.event.client_payload.electric }},${{ github.event.client_payload.water }},${{ github.event.client_payload.due_date }}" >> data.csv
+          ELECTRIC="${{ github.event.client_payload.electric }}"
+          WATER="${{ github.event.client_payload.water }}"
+          TOTAL=$(awk "BEGIN {print $ELECTRIC + $WATER}")
+          echo "${{ github.event.client_payload.month }},$ELECTRIC,$WATER,${{ github.event.client_payload.due_date }},$TOTAL" >> data.csv
 
       - name: Commit and push changes
         run: |
